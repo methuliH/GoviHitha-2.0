@@ -427,8 +427,7 @@ GoviHitha/
 │   └── package.json
 ├── Dockerfile                       # python:3.11-slim; 2 uvicorn workers; Cloud Run ready
 ├── cloudbuild.yaml                  # Cloud Build CI/CD
-├── .env.example                     # Environment variable template
-└── CLAUDE.md                        # Developer guide (architecture, errors, startup)
+├── example.env                      # Environment variable template
 ```
 
 ---
