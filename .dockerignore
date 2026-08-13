@@ -1,0 +1,9 @@
+agents/.venv
+agents/__pycache__
+agents/**/__pycache__
+agents/tests
+agents/**/*.pyc
+frontend/
+.git
+.env
+*.md

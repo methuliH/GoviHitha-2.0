@@ -1,0 +1,291 @@
+{
+  "_meta": {
+    "source": "https://www.hayleysagriculture.com/product-category/business/crop-protection/",
+    "scraped_date": "2026-07-05",
+    "total_products": 28,
+    "note": "Point-in-time snapshot of the Hayleys Agriculture crop-protection catalog. Re-scrape the catalog page and its subcategories to refresh. Hayleys is a distributor — no prices or checkout; link to product page + dealer locator.",
+    "dealer_url": "https://www.hayleysagriculture.com/dealer-locater/"
+  },
+  "products": [
+    {
+      "id": "folicur-tebuconazole",
+      "name": "Folicur Tebuconazole",
+      "category": "fungicide",
+      "active_ingredient": "Tebuconazole 250g/L EW",
+      "url": "https://www.hayleysagriculture.com/folicur-tebuconazole/",
+      "target_crops": ["paddy", "banana", "beans", "onion", "cabbage", "tea", "rubber", "strawberry", "citrus", "tobacco"],
+      "target_diseases": ["rice blast", "sheath blight", "sigatoka", "codona leaf spot", "angular leaf spot", "rust", "purple blotch", "mycosphaerella leaf spot", "blister blight", "white root disease", "cercospora", "alternaria leaf spot"],
+      "description": "Systemic fungicide with protective and curative action; foliar or seed-dressing application. Pre-harvest interval 21 days (7 days for tea)."
+    },
+    {
+      "id": "hayleys-hexaconazole",
+      "name": "Hayleys Hexaconazole",
+      "category": "fungicide",
+      "active_ingredient": "Hexaconazole (triazole)",
+      "url": "https://www.hayleysagriculture.com/hayleys-hexaconazole/",
+      "target_crops": ["paddy", "tea", "beans", "rubber"],
+      "target_diseases": ["sheath blight", "blister blight", "red root disease", "rust", "anthracnose", "angular leaf spot", "white root disease"],
+      "description": "Broad-spectrum systemic triazole fungicide with protective and curative action. Listed for paddy sheath blight, tea blister blight and redroot disease, bean diseases, and rubber white root disease."
+    },
+    {
+      "id": "hayleys-mancozeb",
+      "name": "Hayleys Mancozeb",
+      "category": "fungicide",
+      "active_ingredient": "Mancozeb 80% WP",
+      "url": "https://www.hayleysagriculture.com/hayleys-mancozeb/",
+      "target_crops": ["tomato", "potato", "onion", "carrot", "cabbage", "cauliflower", "cucumber", "pumpkin", "chilli"],
+      "target_diseases": ["early blight", "late blight", "purple blotch", "alternaria blight", "blossom blight", "downy mildew"],
+      "description": "Broad-spectrum contact and protective fungicide (wettable powder). Repeat spraying at 7–10 day intervals. Pre-harvest interval 14 days."
+    },
+    {
+      "id": "antracol-propineb",
+      "name": "Antracol Propineb",
+      "category": "fungicide",
+      "active_ingredient": "Propineb 70% WP",
+      "url": "https://www.hayleysagriculture.com/antracol-propineb/",
+      "target_crops": ["paddy", "onion", "carrot", "strawberry", "tomato", "capsicum", "chilli", "potato", "beans", "crucifers", "cucurbits"],
+      "target_diseases": ["field grain discoloration", "purple blotch", "alternaria blight", "early blight", "late blight", "leaf spot", "leaf blight", "blossom blight", "angular leaf spot", "downy mildew"],
+      "description": "Contact and protective fungicide that adheres to plant surfaces without penetrating tissue. Apply every 7–10 days. Pre-harvest interval 14 days."
+    },
+    {
+      "id": "nativo-75-wg",
+      "name": "Nativo 75 WG",
+      "category": "fungicide",
+      "active_ingredient": "Tebuconazole 500g/kg + Trifloxystrobin 250g/kg WG",
+      "url": "https://www.hayleysagriculture.com/nativo-75-wg/",
+      "target_crops": ["cucurbits", "onion", "capsicum", "chilli"],
+      "target_diseases": ["powdery mildew", "purple blotch", "anthracnose"],
+      "description": "Broad-spectrum systemic + mesostemic action. Combines triazole (curative) and strobilurin (preventive) modes of action. Pre-harvest interval 21 days."
+    },
+    {
+      "id": "nando-fluazinam",
+      "name": "Nando Fluazinam",
+      "category": "fungicide",
+      "active_ingredient": "Fluazinam 500g/L SC",
+      "url": "https://www.hayleysagriculture.com/nando-fluazinam/",
+      "target_crops": ["potato"],
+      "target_diseases": ["potato blight", "late blight", "tuber blight"],
+      "description": "Suspension concentrate specifically formulated for control of Potato Blight and protection against Tuber Blight. Highly effective against Phytophthora infestans."
+    },
+    {
+      "id": "monceren-wp-25",
+      "name": "Monceren WP 25%",
+      "category": "fungicide",
+      "active_ingredient": "Pencycuron 25% WP",
+      "url": "https://www.hayleysagriculture.com/monceren-wp-25/",
+      "target_crops": ["potato"],
+      "target_diseases": ["black scurf", "stem canker", "rhizoctonia"],
+      "description": "Non-systemic protective fungicide specifically listed for Potato Black Scurf and Stem Canker diseases caused by Rhizoctonia solani."
+    },
+    {
+      "id": "powersol-thiram",
+      "name": "Powersol Thiram",
+      "category": "fungicide",
+      "active_ingredient": "Thiram",
+      "url": "https://www.hayleysagriculture.com/powersol-thiram/",
+      "target_crops": ["general"],
+      "target_diseases": ["seed-borne fungal diseases"],
+      "description": "Crop protection fungicide to prevent fungal diseases in seed and crops. General seed treatment and foliar protection."
+    },
+    {
+      "id": "admire-imidacloprid",
+      "name": "Admire Imidacloprid",
+      "category": "insecticide",
+      "active_ingredient": "Imidacloprid 200g/L SL",
+      "url": "https://www.hayleysagriculture.com/admire-imidacloprid/",
+      "target_crops": ["paddy", "chilli", "capsicum", "potato", "brinjal", "onion", "beans", "cabbage", "tomato", "okra", "cucurbits", "pulses", "mango", "coconut", "tobacco"],
+      "target_diseases": ["brown plant hopper", "thrips", "aphids", "scales", "mealy bugs", "leaf curl complex", "leafhoppers", "termites"],
+      "description": "Systemic neonicotinoid insecticide acting as insect neurotoxin. Controls sucking pests including hoppers, thrips, aphids, and whitefly vectors. Pre-harvest interval 14 days."
+    },
+    {
+      "id": "hayleys-bmpc",
+      "name": "Hayleys BMPC",
+      "category": "insecticide",
+      "active_ingredient": "Fenobucarb 500g/L EC",
+      "url": "https://www.hayleysagriculture.com/hayleys-bmpc/",
+      "target_crops": ["paddy", "chilli", "capsicum"],
+      "target_diseases": ["leafhoppers", "plant hoppers", "aphids", "leaf rollers", "rice borers", "field crabs", "thrips", "whiteflies"],
+      "description": "Carbamate insecticide excellent against rice leafhoppers, aphids, leaf rollers, rice borers, plant hoppers and field crabs. Also listed for chilli/capsicum thrips, aphids, and whiteflies."
+    },
+    {
+      "id": "velum-prime",
+      "name": "Velum Prime",
+      "category": "nematicide",
+      "active_ingredient": "Flopyram 400SC",
+      "url": "https://www.hayleysagriculture.com/velum-prime/",
+      "target_crops": ["tea", "guava"],
+      "target_diseases": ["nematodes", "pratylenchus loosi", "root-knot nematode", "meloidogyne"],
+      "description": "Systemic and contact nematicide. For tea: controls Pratylenchus loosi at planting and post-pruning. For guava: controls root-knot nematodes (Meloidogyne spp.)."
+    },
+    {
+      "id": "belt-flubendiamide",
+      "name": "Belt Flubendiamide",
+      "category": "insecticide",
+      "active_ingredient": "Flubendiamide",
+      "url": "https://www.hayleysagriculture.com/belt-flubendiamide/",
+      "target_crops": ["general"],
+      "target_diseases": ["caterpillars", "bollworm", "armyworm", "lepidoptera larvae"],
+      "description": "Novel mode of action (ryanodine receptor modulator) with specificity for Lepidoptera pests — caterpillars, bollworms, armyworms."
+    },
+    {
+      "id": "decis-deltamethrin",
+      "name": "Decis Deltamethrin",
+      "category": "insecticide",
+      "active_ingredient": "Deltamethrin",
+      "url": "https://www.hayleysagriculture.com/decis-deltamethrin/",
+      "target_crops": ["general"],
+      "target_diseases": ["broad-spectrum insects"],
+      "description": "Broad-spectrum pyrethroid insecticide with quick knockdown; acts by contact and ingestion. Wide crop and pest spectrum."
+    },
+    {
+      "id": "hayleys-profenophos",
+      "name": "Hayleys Profenophos",
+      "category": "insecticide",
+      "active_ingredient": "Profenophos",
+      "url": "https://www.hayleysagriculture.com/hayleys-profenophos/",
+      "target_crops": ["general"],
+      "target_diseases": ["insects", "mites"],
+      "description": "Organophosphate contact and stomach insecticide/acaricide. Effective against a range of insect and mite pests."
+    },
+    {
+      "id": "mimic-20-f",
+      "name": "Mimic 20 F",
+      "category": "insecticide",
+      "active_ingredient": "Tebufenozide",
+      "url": "https://www.hayleysagriculture.com/mimic-20-f/",
+      "target_crops": ["general"],
+      "target_diseases": ["caterpillars", "moth larvae", "butterfly larvae"],
+      "description": "Selective insecticide (ecdysone agonist) effective against Lepidoptera larvae (moths and butterflies). Selective — minimal impact on beneficial insects."
+    },
+    {
+      "id": "runner-240-sc",
+      "name": "Runner SC 240",
+      "category": "insecticide",
+      "active_ingredient": "Methoxyfenozide 240g/L",
+      "url": "https://www.hayleysagriculture.com/runner-240-sc/",
+      "target_crops": ["general"],
+      "target_diseases": ["caterpillars", "armyworm", "lepidoptera larvae"],
+      "description": "Ecdysone agonist insecticide active on Lepidoptera feeding larval stages. Selective with low mammalian toxicity."
+    },
+    {
+      "id": "success",
+      "name": "Success",
+      "category": "biological insecticide",
+      "active_ingredient": "Spinosad",
+      "url": "https://www.hayleysagriculture.com/success/",
+      "target_crops": ["general"],
+      "target_diseases": ["caterpillars", "thrips", "leafminers"],
+      "description": "Biological insecticide derived from Saccharopolyspora spinosa fermentation. Effective against caterpillars, thrips, and leafminers. Low mammalian toxicity."
+    },
+    {
+      "id": "lak-gro-bait",
+      "name": "Lak Gro Bait",
+      "category": "bait",
+      "active_ingredient": "Spinosad 25g/LSC",
+      "url": "https://www.hayleysagriculture.com/lak-gro-bait/",
+      "target_crops": ["general"],
+      "target_diseases": ["fruit flies", "pests (bait trap)"],
+      "description": "Protein bait containing Spinosad for attract-and-kill pest management. Primarily used for fruit fly and similar pest control."
+    },
+    {
+      "id": "gaucho-imidacloprid",
+      "name": "Gaucho Imidacloprid",
+      "category": "insecticide",
+      "active_ingredient": "Imidacloprid (seed treatment)",
+      "url": "https://www.hayleysagriculture.com/gaucho-imidacloprid/",
+      "target_crops": ["general"],
+      "target_diseases": ["sucking pests", "soil pests"],
+      "description": "Seed treatment neonicotinoid providing crop protection for 30–40 days from planting. IPM-friendly option for early-season sucking pest control."
+    },
+    {
+      "id": "provado-imidacloprid",
+      "name": "Provado Imidacloprid",
+      "category": "insecticide",
+      "active_ingredient": "Imidacloprid (neonicotinoid)",
+      "url": "https://www.hayleysagriculture.com/provado-imidacloprid/",
+      "target_crops": ["general"],
+      "target_diseases": ["sucking pests", "thrips", "aphids", "whitefly"],
+      "description": "Systemic neonicotinoid insecticide for various sucking insect pests across multiple crops."
+    },
+    {
+      "id": "curbix",
+      "name": "Curbix",
+      "category": "insecticide",
+      "active_ingredient": "Ethiprole (phenyl-pyrazole)",
+      "url": "https://www.hayleysagriculture.com/curbix/",
+      "target_crops": ["general"],
+      "target_diseases": ["wide insect range"],
+      "description": "Non-systemic phenyl-pyrazole insecticide effective against a wide range of insect pests."
+    },
+    {
+      "id": "a-t-l-diuron",
+      "name": "A T L Diuron",
+      "category": "herbicide",
+      "active_ingredient": "Diuron",
+      "url": "https://www.hayleysagriculture.com/a-t-l-diuron/",
+      "target_crops": ["general"],
+      "target_diseases": ["weeds (broadleaf)"],
+      "description": "Systemic herbicide absorbed through roots with acropetal translocation. Controls broadleaf weeds."
+    },
+    {
+      "id": "hayleys-diuron",
+      "name": "Hayleys Diuron",
+      "category": "herbicide",
+      "active_ingredient": "Diuron",
+      "url": "https://www.hayleysagriculture.com/hayleys-diuron/",
+      "target_crops": ["general"],
+      "target_diseases": ["weeds (broadleaf)"],
+      "description": "Systemic herbicide with soil application for broadleaf weed control."
+    },
+    {
+      "id": "haydol-mcpa-60",
+      "name": "Haydol MCPA 60",
+      "category": "herbicide",
+      "active_ingredient": "MCPA 60%",
+      "url": "https://www.hayleysagriculture.com/haydol-mcpa-60/",
+      "target_crops": ["general"],
+      "target_diseases": ["weeds (broad-leaf, sedges)"],
+      "description": "Selective herbicide controlling broad-leaf weeds and sedges."
+    },
+    {
+      "id": "kairo-pretilachlor",
+      "name": "Kairo Pretilachlor",
+      "category": "herbicide",
+      "active_ingredient": "Pretilachlor",
+      "url": "https://www.hayleysagriculture.com/kairo-pretilachlor/",
+      "target_crops": ["paddy"],
+      "target_diseases": ["weeds (grasses, broad leaves, sedges)"],
+      "description": "Pre-emergence herbicide for paddy controlling grasses, broad-leaved weeds, and sedges."
+    },
+    {
+      "id": "proxi-310",
+      "name": "Proxi 310 Weedicide",
+      "category": "herbicide",
+      "active_ingredient": "Bispyribac-sodium",
+      "url": "https://www.hayleysagriculture.com/proxi-310/",
+      "target_crops": ["paddy"],
+      "target_diseases": ["weeds (grasses, sedges, broad-leaved)"],
+      "description": "Pre and post emergence weedicide for grasses, sedges, and broad-leaved weeds in lowland paddy."
+    },
+    {
+      "id": "sencor-metribuzin",
+      "name": "Sencor Metribuzin",
+      "category": "herbicide",
+      "active_ingredient": "Metribuzin",
+      "url": "https://www.hayleysagriculture.com/sencor-metribuzin/",
+      "target_crops": ["potato", "carrot", "soybean", "tomato", "sugarcane"],
+      "target_diseases": ["weeds (selective)"],
+      "description": "Selective herbicide for potato, carrot, soybean, tomato, and sugarcane crops."
+    },
+    {
+      "id": "tetris",
+      "name": "Tetris Weedicide",
+      "category": "herbicide",
+      "active_ingredient": "Profoxydim",
+      "url": "https://www.hayleysagriculture.com/tetris/",
+      "target_crops": ["paddy"],
+      "target_diseases": ["weeds (grass)"],
+      "description": "Post-emergence rice herbicide for grass weed control in paddy. Low mammalian toxicity."
+    }
+  ]
+}

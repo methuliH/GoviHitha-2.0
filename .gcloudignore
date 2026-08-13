@@ -1,0 +1,11 @@
+.git
+.gitignore
+frontend/
+agents/.venv
+agents/__pycache__
+agents/**/__pycache__
+agents/**/*.pyc
+agents/tests/
+*.md
+scripts/
+cloudbuild.yaml

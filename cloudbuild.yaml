@@ -1,0 +1,54 @@
+# Cloud Build config — builds the agent Docker image and deploys to Cloud Run.
+#
+# Trigger: push to master (set up in Cloud Build console).
+# Manual run:
+#   gcloud builds submit . --config=cloudbuild.yaml \
+#     --substitutions=_REGION=us-central1 \
+#     --project=researchbrain-497600
+steps:
+  # 1. Build the Docker image
+  - name: gcr.io/cloud-builders/docker
+    args:
+      - build
+      - -t
+      - $_IMAGE_TAG
+      - .
+
+  # 2. Push to Artifact Registry
+  - name: gcr.io/cloud-builders/docker
+    args:
+      - push
+      - $_IMAGE_TAG
+
+  # 3. Deploy to Cloud Run
+  - name: gcr.io/google.com/cloudsdktool/cloud-sdk
+    entrypoint: gcloud
+    args:
+      - run
+      - deploy
+      - govihitha-agents
+      - --image=$_IMAGE_TAG
+      - --region=$_REGION
+      - --platform=managed
+      - --allow-unauthenticated
+      - --memory=1Gi
+      - --cpu=1
+      - --timeout=120
+      - --concurrency=10
+      - --min-instances=0
+      - --max-instances=5
+      - --project=$PROJECT_ID
+      - --set-secrets=GOOGLE_API_KEY=govihitha-api-key:latest
+      - --quiet
+
+# _IMAGE_TAG uses only built-in substitutions ($PROJECT_ID, $SHORT_SHA) — valid.
+# _REGION is separate so the deploy step can reference it independently.
+substitutions:
+  _REGION: us-central1
+  _IMAGE_TAG: us-central1-docker.pkg.dev/$PROJECT_ID/govihitha/agents:$SHORT_SHA
+
+images:
+  - us-central1-docker.pkg.dev/$PROJECT_ID/govihitha/agents:$SHORT_SHA
+
+options:
+  logging: CLOUD_LOGGING_ONLY

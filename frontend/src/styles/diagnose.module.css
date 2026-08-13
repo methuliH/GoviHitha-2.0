@@ -1,0 +1,148 @@
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.4; }
+}
+
+.fadeUp1 { animation: fadeUp 0.65s ease both 0.05s; }
+.fadeUp2 { animation: fadeUp 0.65s ease both 0.15s; }
+
+.fieldInput {
+  width: 100%;
+  appearance: none;
+  -webkit-appearance: none;
+  background: rgba(255, 255, 255, 0.72);
+  border: 1.5px solid rgba(49, 87, 44, 0.22);
+  border-radius: 12px;
+  padding: 14px 42px 14px 16px;
+  font: 500 15px 'Outfit', sans-serif;
+  color: #1e3a18;
+  cursor: pointer;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.fieldInput:focus {
+  border-color: #31572C;
+  box-shadow: 0 0 0 3px rgba(49, 87, 44, 0.12);
+}
+
+.fieldTextarea {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.72);
+  border: 1.5px solid rgba(49, 87, 44, 0.22);
+  border-radius: 12px;
+  padding: 14px 16px;
+  font: 400 15px/1.65 'Outfit', sans-serif;
+  color: #1e3a18;
+  resize: vertical;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.fieldTextarea:focus {
+  border-color: #31572C;
+  box-shadow: 0 0 0 3px rgba(49, 87, 44, 0.12);
+}
+.fieldTextarea::placeholder { color: rgba(30, 58, 24, 0.4); }
+
+.districtTrigger {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.72);
+  border: 1.5px solid rgba(49, 87, 44, 0.22);
+  border-radius: 12px;
+  padding: 14px 42px 14px 16px;
+  font: 500 15px 'Outfit', sans-serif;
+  cursor: pointer;
+  outline: none;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.districtTriggerOpen {
+  border-color: #31572C;
+  box-shadow: 0 0 0 3px rgba(49, 87, 44, 0.12);
+}
+
+.districtChip {
+  font: 500 13px 'Outfit', sans-serif;
+  padding: 7px 14px;
+  border-radius: 100px;
+  cursor: pointer;
+  border: 1.5px solid rgba(49, 87, 44, 0.22);
+  background: transparent;
+  color: #1e3a18;
+  transition: background 0.15s, border-color 0.15s;
+}
+.districtChip:hover {
+  background: rgba(49, 87, 44, 0.1);
+  border-color: rgba(49, 87, 44, 0.5);
+}
+.districtChipSelected {
+  background: #31572C;
+  color: #F0E7D5;
+  border-color: #31572C;
+}
+
+.uploadZone {
+  background: rgba(255, 255, 255, 0.55);
+  border: 2px dashed rgba(49, 87, 44, 0.28);
+  border-radius: 16px;
+  padding: 48px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s;
+}
+.uploadZone:hover, .uploadZoneDragging {
+  background: rgba(255, 255, 255, 0.8);
+  border-color: rgba(49, 87, 44, 0.5);
+}
+
+.submitBtn {
+  width: 100%;
+  font: 600 17px 'Outfit', sans-serif;
+  background: #31572C;
+  color: #F0E7D5;
+  border: none;
+  padding: 18px 34px;
+  border-radius: 14px;
+  cursor: pointer;
+  letter-spacing: -0.01em;
+  transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+}
+.submitBtn:hover:not(:disabled) {
+  background: #1e3a18;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px rgba(30, 58, 24, 0.28);
+}
+.submitBtn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ── Responsive layout helpers ─────────────────────────────────────────── */
+
+/* Form card: compact padding on mobile */
+.formCard { padding: 28px 20px; }
+@media (min-width: 540px) { .formCard { padding: 44px 48px; } }
+
+/* Crop + district row: stack on mobile */
+.formRow {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 18px;
+  margin-bottom: 22px;
+}
+@media (min-width: 540px) { .formRow { grid-template-columns: 1fr 1fr; gap: 22px; } }
+
+/* Upload zone: reduce vertical padding on mobile */
+@media (max-width: 539px) { .uploadZone { padding: 32px 16px; } }

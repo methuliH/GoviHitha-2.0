@@ -1,0 +1,179 @@
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-8px); }
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.4; }
+}
+
+.fadeUp0 { animation: fadeUp 0.65s ease both 0s; }
+.fadeUp1 { animation: fadeUp 0.65s ease both 0.1s; }
+.fadeUp2 { animation: fadeUp 0.65s ease both 0.2s; }
+.fadeUp3 { animation: fadeUp 0.65s ease both 0.3s; }
+.fadeUp4 { animation: fadeUp 0.65s ease both 0.4s; }
+.fadeUp5 { animation: fadeUp 0.65s ease both 0.52s; }
+
+.float { animation: float 4s ease-in-out infinite; }
+.pulseDot { animation: pulse 2s ease-in-out infinite; }
+
+/* Step cards */
+.stepCardLight {
+  flex: 1;
+  background: #F0E7D5;
+  border-radius: 24px;
+  padding: 32px 36px;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.22);
+  transition: transform 0.3s, box-shadow 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+.stepCardLight:hover {
+  transform: translateX(6px);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+}
+
+.stepCardDark {
+  flex: 1;
+  background: #31572C;
+  border-radius: 24px;
+  padding: 32px 36px;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.28);
+  transition: transform 0.3s, box-shadow 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+.stepCardDark:hover {
+  transform: translateX(6px);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.38);
+}
+
+.stepCardDeep {
+  flex: 1;
+  background: #1e3a18;
+  border: 1.5px solid rgba(236,243,158,0.2);
+  border-radius: 24px;
+  padding: 32px 36px;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.35);
+  transition: transform 0.3s, box-shadow 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+.stepCardDeep:hover {
+  transform: translateX(6px);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.45);
+}
+
+/* CTA */
+.ctaBtn {
+  font: 600 16px 'Outfit';
+  background: #31572C;
+  color: #F0E7D5;
+  border: none;
+  padding: 16px 36px;
+  border-radius: 14px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+  flex-shrink: 0;
+  text-decoration: none;
+  display: inline-block;
+}
+.ctaBtn:hover {
+  background: #1e3a18;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 28px rgba(0,0,0,0.25);
+}
+
+/* FAQ */
+.faqItem {
+  background: rgba(250,249,246,0.04);
+  border: 1px solid rgba(236,243,158,0.14);
+  border-radius: 18px;
+  padding: 24px 28px;
+  cursor: pointer;
+  transition: background 0.25s, border-color 0.25s;
+}
+.faqItem:hover {
+  border-color: rgba(236,243,158,0.3);
+}
+.faqItemOpen {
+  background: rgba(250,249,246,0.07);
+  border: 1px solid rgba(236,243,158,0.14);
+  border-radius: 18px;
+  padding: 24px 28px;
+  cursor: pointer;
+  transition: background 0.25s, border-color 0.25s;
+}
+.faqItemOpen:hover {
+  border-color: rgba(236,243,158,0.3);
+}
+
+/* ── Responsive layout helpers ─────────────────────────────────────────── */
+
+/* Hero section padding */
+.aboutHero { padding: 48px 20px 32px; }
+@media (min-width: 640px)  { .aboutHero { padding: 64px 32px 40px; } }
+@media (min-width: 1024px) { .aboutHero { padding: 80px 48px 40px; } }
+
+/* Timeline section padding */
+.timelineSection { padding: 28px 20px 60px; }
+@media (min-width: 640px)  { .timelineSection { padding: 32px 32px 60px; } }
+@media (min-width: 1024px) { .timelineSection { padding: 32px 48px 80px; } }
+
+/* Step row: column on mobile, row on desktop */
+.stepRow {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: stretch;
+}
+@media (min-width: 640px) {
+  .stepRow { flex-direction: row; gap: 32px; align-items: flex-start; }
+}
+
+/* Step icon column: natural width on mobile, fixed 80px centered on desktop */
+.stepIconCol {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+@media (min-width: 640px) {
+  .stepIconCol { flex-direction: column; align-items: center; width: 80px; }
+}
+
+/* CTA strip: column on mobile, row on desktop */
+.ctaStrip {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: flex-start;
+  padding: 28px 24px;
+}
+@media (min-width: 640px) {
+  .ctaStrip {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    padding: 32px 44px;
+  }
+}
+
+/* Step cards: reduce padding on mobile */
+@media (max-width: 639px) {
+  .stepCardLight, .stepCardDark, .stepCardDeep { padding: 24px 20px; }
+}
+
+/* Timeline spine: hidden on mobile (column layout breaks it) */
+.timelineSpine { display: none; }
+@media (min-width: 640px) { .timelineSpine { display: block; } }
+
+/* FAQ section padding */
+.faqSection { padding: 48px 20px 80px; }
+@media (min-width: 640px)  { .faqSection { padding: 48px 32px 80px; } }
+@media (min-width: 1024px) { .faqSection { padding: 48px 48px 96px; } }

@@ -1,0 +1,54 @@
+{
+  "_meta": {
+    "source_note": "Curated reference list of publicly known Sri Lankan crop cultivars (Department of Agriculture / Tea Research Institute / Coconut Research Institute released varieties, or long-established local varieties). Used to ground PlantingAdvisorAgent's recommendations in real variety names instead of letting the model invent one. Not a substitute for local Agrarian Services Centre confirmation before purchase."
+  },
+  "rice": [
+    { "variety_name": "Bg 300", "days_to_maturity": 105, "traits": ["drought-tolerant", "dry-zone", "short-duration"] },
+    { "variety_name": "At 362", "days_to_maturity": 90, "traits": ["drought-escape", "very-short-duration", "dry-zone"] },
+    { "variety_name": "Bg 352", "days_to_maturity": 115, "traits": ["high-yield", "irrigated", "wet-zone"] }
+  ],
+  "corn": [
+    { "variety_name": "Sampath", "days_to_maturity": 105, "traits": ["open-pollinated", "drought-tolerant"] },
+    { "variety_name": "Ruwan", "days_to_maturity": 100, "traits": ["open-pollinated", "dry-zone"] },
+    { "variety_name": "Pacific 11", "days_to_maturity": 115, "traits": ["hybrid", "high-yield", "needs-consistent-rainfall"] }
+  ],
+  "tea": [
+    { "variety_name": "TRI 2025", "days_to_maturity": 1095, "traits": ["high-yield", "mid-country"] },
+    { "variety_name": "TRI 3055", "days_to_maturity": 1095, "traits": ["drought-tolerant", "uva-intermediate-zone"] },
+    { "variety_name": "TRI 2043", "days_to_maturity": 1095, "traits": ["vigorous", "low-country-wet-zone"] }
+  ],
+  "coconut": [
+    { "variety_name": "CRIC 60", "days_to_maturity": 1460, "traits": ["hybrid", "early-bearing", "high-yield"] },
+    { "variety_name": "Sri Lanka Tall", "days_to_maturity": 2190, "traits": ["drought-hardy", "long-maturity", "traditional"] },
+    { "variety_name": "Sri Lanka Green Dwarf", "days_to_maturity": 1095, "traits": ["early-bearing", "needs-consistent-water"] }
+  ],
+  "banana": [
+    { "variety_name": "Ambul", "days_to_maturity": 300, "traits": ["popular", "cavendish-type"] },
+    { "variety_name": "Kolikuttu", "days_to_maturity": 330, "traits": ["aromatic", "mid-duration"] },
+    { "variety_name": "Anamalu", "days_to_maturity": 330, "traits": ["large-fruited", "relatively-drought-tolerant"] }
+  ],
+  "cassava": [
+    { "variety_name": "MU 51", "days_to_maturity": 270, "traits": ["high-yield", "widely-grown"] },
+    { "variety_name": "Kirikawadi", "days_to_maturity": 300, "traits": ["traditional", "drought-tolerant"] },
+    { "variety_name": "Suranimala", "days_to_maturity": 270, "traits": ["dry-zone", "disease-tolerant"] }
+  ],
+  "pepper": [
+    { "variety_name": "Panniyur 1", "days_to_maturity": 1095, "traits": ["hybrid", "high-yield"] },
+    { "variety_name": "Local Ceylon Pepper", "days_to_maturity": 1095, "traits": ["traditional", "hardy"] }
+  ],
+  "chilli": [
+    { "variety_name": "MI-2", "days_to_maturity": 90, "traits": ["high-yield", "wet-zone"] },
+    { "variety_name": "MI Green", "days_to_maturity": 90, "traits": ["disease-tolerant"] },
+    { "variety_name": "KA-2", "days_to_maturity": 100, "traits": ["dry-zone", "drought-tolerant"] }
+  ],
+  "tomato": [
+    { "variety_name": "Thilina", "days_to_maturity": 75, "traits": ["high-yield", "widely-grown"] },
+    { "variety_name": "Bhathiya", "days_to_maturity": 80, "traits": ["disease-tolerant"] },
+    { "variety_name": "T 245", "days_to_maturity": 75, "traits": ["dry-zone", "heat-tolerant"] }
+  ],
+  "potato": [
+    { "variety_name": "Granola", "days_to_maturity": 90, "traits": ["most-common", "up-country"] },
+    { "variety_name": "Value", "days_to_maturity": 95, "traits": ["up-country", "high-yield"] },
+    { "variety_name": "Wageninga", "days_to_maturity": 100, "traits": ["up-country", "disease-tolerant"] }
+  ]
+}

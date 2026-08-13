@@ -1,0 +1,15 @@
+{
+  "_meta": {
+    "source_note": "Representative typical Sri Lankan farm-gate price ranges, curated from publicly cited Dept. of Agriculture / HARTI price bulletin figures. NOT a live daily government feed -- the Dept. of Agriculture exposes no public price API. 'todays_price_lkr' is derived from a deterministic per-day variation model around avg_price_lkr, not a live scrape."
+  },
+  "rice": { "unit": "per kg (paddy)", "avg_price_lkr": 100, "volatility_pct": 0.12 },
+  "corn": { "unit": "per kg", "avg_price_lkr": 100, "volatility_pct": 0.15 },
+  "tea": { "unit": "per kg (green leaf)", "avg_price_lkr": 100, "volatility_pct": 0.18 },
+  "coconut": { "unit": "per nut", "avg_price_lkr": 80, "volatility_pct": 0.20 },
+  "banana": { "unit": "per kg", "avg_price_lkr": 180, "volatility_pct": 0.20 },
+  "cassava": { "unit": "per kg", "avg_price_lkr": 100, "volatility_pct": 0.15 },
+  "pepper": { "unit": "per kg (dried)", "avg_price_lkr": 2500, "volatility_pct": 0.15 },
+  "chilli": { "unit": "per kg (green)", "avg_price_lkr": 200, "volatility_pct": 0.30 },
+  "tomato": { "unit": "per kg", "avg_price_lkr": 150, "volatility_pct": 0.35 },
+  "potato": { "unit": "per kg", "avg_price_lkr": 220, "volatility_pct": 0.18 }
+}
