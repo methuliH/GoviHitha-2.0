@@ -2,13 +2,13 @@
 
 # 🌾 GoviHitha
 
-**AI crop advisory for Sri Lankan farmers — diagnose disease, check weather risk, and find local remedies in one shot.**
+**AI crop advisory for Sri Lankan farmers — diagnose disease, check weather risk, and find a local remedy in one shot.**
 
 [![Python](https://img.shields.io/badge/python-3.11-blue)](https://www.python.org/)
 [![Next.js](https://img.shields.io/badge/Next.js-15-black?logo=next.js)](https://nextjs.org/)
 [![Gemini](https://img.shields.io/badge/Gemini-Vision-orange?logo=google)](https://ai.google.dev/)
-[![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
-[![Last commit](https://img.shields.io/github/last-commit/methuliH/GoviHitha)](https://github.com/methuliH/GoviHitha/commits/master)
+[![License](https://img.shields.io/badge/license-MIT-green)](#license)
+[![Last commit](https://img.shields.io/github/last-commit/methuliH/GoviHitha-2.0)](https://github.com/methuliH/GoviHitha-2.0/commits)
 
 <!-- Screenshot: replace this comment with an actual screenshot once deployed -->
 <!-- ![GoviHitha demo](docs/screenshot.png) -->
@@ -17,7 +17,7 @@
 
 ---
 
-GoviHitha ("ගොවිහිත" — *Farmer's Friend* in Sinhala) is a full-stack AI advisory tool built for Sri Lankan smallholder farmers. A farmer takes a photo of their crop, describes what they see, and GoviHitha returns a disease diagnosis, live weather-based risk alerts, and product recommendations with local availability and price estimates — all in under 30 seconds.
+GoviHitha ("ගොවිහිත" — *Farmer's Friend* in Sinhala) is a full-stack AI advisory tool built for Sri Lankan smallholder farmers. A farmer takes a photo of their crop, describes what they see, and GoviHitha returns a disease diagnosis, live weather-based risk alerts, and label-matched crop-protection products from the Hayleys Agriculture catalogue with a dealer-locator link, all from a single request.
 
 ---
 
@@ -32,6 +32,7 @@ GoviHitha ("ගොවිහිත" — *Farmer's Friend* in Sinhala) is a full-s
 - [API Reference](#api-reference)
 - [Project Structure](#project-structure)
 - [Scope Delivered](#scope-delivered)
+- [Known Limitations](#known-limitations)
 - [Deployment](#deployment)
 - [Contributing](#contributing)
 - [License](#license)
@@ -44,11 +45,11 @@ GoviHitha ("ගොවිහිත" — *Farmer's Friend* in Sinhala) is a full-s
 - **Crop-disease plausibility check** — flags mismatches (e.g. rice image diagnosed as tomato blight) so farmers know when to re-photograph
 - **Live weather risk alerts** — pulls real-time data from OpenMeteo and contextualises it against the diagnosed disease (waterlogging, high humidity, drought risk)
 - **Smart Planting Advisor** — a standalone flow (crop + district only, no photo) that recommends a real, named crop variety and a sowing window from a 16-day OpenMeteo forecast
-- **Live Market Price Checker** — one-tap check of today's farm-gate price vs. the recent 30-day average for a crop, with a plain-language negotiating tip; no Gemini call, so it's instant and works even offline
-- **Sri Lanka-specific product recommendations** — 2–4 products with local agri-shop availability, LKR price ranges, and Google × Kapruka search links
-- **Parallel agent pipeline** — CropDiagnosis runs first; WeatherAlert and ResourceRecommendation run concurrently, cutting total response time
+- **Market Price Checker** — one-tap check of today's farm-gate price vs. the recent 30-day average for a crop, with a plain-language negotiating tip; no Gemini call, so it's instant and has no LLM cost. Prices are representative ranges with a deterministic daily variation, **not a live feed** (see [Scope Delivered](#scope-delivered))
+- **Hayleys Agriculture product recommendations** — up to 2 label-matched products per diagnosis from a static catalogue snapshot (28 products, scraped 2026-07-05), with product-page and dealer-locator links. If no product label covers the disease it returns an explicit "no match" instead of guessing, and shows no prices ("contact dealer")
+- **Parallel agent pipeline** — CropDiagnosis runs first; WeatherAlert and ResourceRecommendation then run concurrently, cutting total response time
 - **Mock mode** — per-crop demo data (rice, tomato, tea, coconut, and 6 more) served without a backend — ideal for demos and UI development
-- **Rate limiting** — 5 req/min per IP on the Python API; 10 req/min on the Next.js proxy
+- **Rate limiting and cost control** — per-IP limits on the Python API (5 req/min on `/run` and `/advise`, 10 req/min on `/market-price`), a daily Gemini quota (`DAILY_GEMINI_QUOTA`, default 200), and per-IP limits on the Next.js proxy (10 req/min for diagnosis and advisor, 20 req/min for market price). Limits are held in memory per instance
 - **Graceful degradation** — every agent always returns a result; failures surface as structured error fields, never crashes
 
 ---
@@ -72,7 +73,7 @@ OrchestratorAgent
  │        │
  │    [parallel]
  ├── WeatherAlertAgent        ← OpenMeteo fetch → Gemini risk contextualisation
- └── ResourceRecommendationAgent ← Gemini (diagnosis + weather → product JSON)
+ └── ResourceRecommendationAgent ← Hayleys catalogue lookup (diagnosis → label-matched products, no Gemini)
 ```
 
 `PlantingAdvisorAgent` is a separate, standalone flow (`POST /advise`) — it isn't part of the
@@ -107,7 +108,7 @@ dependency.
 | Layer | Technology |
 |---|---|
 | AI / Vision | Google Gemini 2.5 Flash (via `google-genai`) |
-| Agent framework | Google ADK |
+| Agent pattern | Plain Python agent classes calling `google-genai` directly (`google-adk` is listed in requirements but not used for orchestration) |
 | Weather data | OpenMeteo API (free, no auth) |
 | Backend | FastAPI + uvicorn + slowapi |
 | Frontend | Next.js 15, React 18, TypeScript, Tailwind CSS |
@@ -128,8 +129,8 @@ dependency.
 ### 1. Clone the repo
 
 ```bash
-git clone https://github.com/methuliH/GoviHitha.git
-cd GoviHitha
+git clone https://github.com/methuliH/GoviHitha-2.0.git
+cd GoviHitha-2.0
 ```
 
 ### 2. Set up the Python backend
@@ -164,7 +165,7 @@ npm install
 Copy the example and fill in your credentials:
 
 ```bash
-cp .env.example .env
+cp example.env .env
 ```
 
 | Variable | Required | Description |
@@ -172,6 +173,9 @@ cp .env.example .env
 | `GOOGLE_API_KEY` | One of these two | Gemini API key from AI Studio. Takes precedence over Vertex AI. |
 | `GOOGLE_CLOUD_PROJECT` | One of these two | GCP project ID. Used with Vertex AI ADC when no API key is set. |
 | `GOOGLE_CLOUD_REGION` | No | Defaults to `us-central1`. |
+| `ALLOWED_ORIGINS` | No | Comma-separated CORS origins. Defaults to `*`; set it to your frontend domain in production. |
+| `DAILY_GEMINI_QUOTA` | No | Max Gemini-backed requests per rolling 24 h (`/run` and `/advise`). Defaults to `200`. |
+| `RATE_LIMIT_DISABLED` | No | Set to `true` to disable per-IP rate limiting (useful in tests). |
 
 **Auth modes:**
 
@@ -183,6 +187,8 @@ cp .env.example .env
 > **Without valid credentials every Gemini call will fail immediately.** There is no silent fallback — you'll see a structured error in the response.
 
 ### Frontend — `/frontend/.env.local`
+
+Copy `frontend/.env.local.example`, or create the file with:
 
 ```bash
 # Option A — connect to live Python backend
@@ -237,6 +243,18 @@ curl -X POST http://localhost:8000/run \
 
 Set `MOCK_MODE=true` in `frontend/.env.local`, then `npm run dev`. All 10 supported crops return pre-built, self-consistent demo responses tagged with `is_mock: true`.
 
+### Run the tests
+
+```bash
+# Backend (from repo root, venv active; pytest is in requirements.txt)
+python -m pytest agents/tests
+
+# Frontend
+cd frontend && npm test
+```
+
+`agents/test_adk_connection.py` is a manual smoke script that needs real Gemini credentials, not part of the unit suite.
+
 ---
 
 ## API Reference
@@ -251,7 +269,7 @@ Returns server status.
 
 ### `POST /run`
 
-Runs the full 3-agent pipeline. Rate-limited to **5 requests per minute per IP**.
+Runs the full 3-agent pipeline. Rate-limited to **5 requests per minute per IP** and counted against the daily Gemini quota. All four fields are required and must be non-empty (otherwise `422`).
 
 **Request body:**
 
@@ -272,7 +290,7 @@ Runs the full 3-agent pipeline. Rate-limited to **5 requests per minute per IP**
     "disease_name": "Rice Leaf Blast",
     "confidence": 0.92,
     "description": "Fungal infection by Magnaporthe oryzae...",
-    "treatment_steps": ["Apply Tricyclazole 75% WP at 0.6g/L..."],
+    "treatment_steps": ["Apply Folicur Tebuconazole at label rate..."],
     "timeline": "7–10 days with consistent treatment",
     "prevention": "Use blast-resistant varieties...",
     "risk_level": "high",
@@ -297,18 +315,20 @@ Runs the full 3-agent pipeline. Rate-limited to **5 requests per minute per IP**
     "recommendations": [
       {
         "type": "fungicide",
-        "product_name": "Tricyclazole 75% WP",
-        "why": "Directly targets Magnaporthe oryzae...",
-        "availability": "Available at agri-supply shops in Kandy.",
-        "estimated_cost": "1200–2500 LKR per 100g",
-        "application_notes": "Mix 0.6g per litre. Apply every 7 days.",
-        "kapruka_search_link": "https://www.google.com/search?q=Tricyclazole+site:kapruka.com"
+        "product_name": "Folicur Tebuconazole",
+        "active_ingredient": "Tebuconazole 250g/L EW",
+        "why": "Tebuconazole is explicitly listed for Rice Blast in paddy...",
+        "availability": "Available through Hayleys Agriculture dealers across Sri Lanka.",
+        "estimated_cost": "Contact dealer for pricing",
+        "application_notes": "Systemic triazole fungicide...",
+        "hayleys_product_url": "https://www.hayleysagriculture.com/folicur-tebuconazole/",
+        "dealer_url": "https://www.hayleysagriculture.com/dealer-locater/"
       }
     ],
-    "priority_note": "Buy fungicide today — rain in 48h will reduce effectiveness.",
+    "priority_note": "Source Folicur Tebuconazole from a Hayleys Agriculture dealer as soon as possible.",
     "error": null
   },
-  "action_plan": ["Buy Tricyclazole 75% WP today...", "Apply fungicide before rain..."],
+  "action_plan": ["Buy Folicur Tebuconazole today (Contact dealer for pricing) — ...", "Improve field drainage immediately."],
   "timeline": "7–10 days with consistent treatment",
   "error": null
 }
@@ -357,7 +377,7 @@ Runs `PlantingAdvisorAgent` — a standalone flow, independent of `/run`. Rate-l
 
 Runs `MarketPriceAgent` — a standalone, Gemini-free flow. Rate-limited to
 **10 requests per minute per IP** (higher than `/run`/`/advise` since it's just a
-local calculation, not an LLM call).
+local calculation, not an LLM call). Values are representative price ranges plus a daily variation model, not a live government feed.
 
 **Request body:**
 
@@ -389,22 +409,24 @@ local calculation, not an LLM call).
 ## Project Structure
 
 ```
-GoviHitha/
+GoviHitha-2.0/
 ├── agents/                          # Python backend
 │   ├── agents/
 │   │   ├── orchestrator.py          # Runs all 3 agents; sequential then parallel
 │   │   ├── crop_diagnosis.py        # Gemini Vision → disease JSON
 │   │   ├── crop_disease_plausibility.py  # Mismatch guard
 │   │   ├── weather_alert.py         # OpenMeteo + Gemini risk alerts
-│   │   ├── resource_recommendation.py   # Gemini product recommendations
+│   │   ├── resource_recommendation.py   # Hayleys catalogue lookup (static, no Gemini)
 │   │   ├── planting_advisor.py      # OpenMeteo forecast + Gemini → variety/sowing-window JSON
 │   │   └── market_price.py          # Static price lookup + deterministic daily calc, no Gemini
 │   ├── prompts/                     # System prompts for each agent
 │   ├── schemas/                     # Pydantic models (source of truth for response shape)
-│   ├── tools/                       # Gemini Vision wrapper, OpenMeteo client
+│   ├── tools/                       # Gemini Vision wrapper, OpenMeteo client (kapruka_search.py is legacy, unused)
 │   ├── data/                        # Static reference data (Hayleys products, crop varieties, market prices)
 │   ├── config/                      # Settings, region coordinates, constants
 │   ├── utils/                       # Logger, retry/backoff, image loader
+│   ├── rate_limit.py                # In-memory daily Gemini quota
+│   ├── tests/                       # pytest suites per agent plus server
 │   ├── server.py                    # FastAPI app — POST /run, /advise, /market-price, GET /health, CORS
 │   └── requirements.txt
 ├── frontend/                        # Next.js frontend
@@ -425,9 +447,12 @@ GoviHitha/
 │   │   ├── lib/                     # Types, API client, constants
 │   │   └── styles/
 │   └── package.json
+├── doc/                             # Design notes, demo video script
+├── scripts/                         # PowerShell deploy helpers (backend, frontend)
 ├── Dockerfile                       # python:3.11-slim; 2 uvicorn workers; Cloud Run ready
+├── Procfile                         # uvicorn start command for Procfile-based hosts
 ├── cloudbuild.yaml                  # Cloud Build CI/CD
-├── example.env                      # Environment variable template
+├── example.env                      # Environment variable template (backend and frontend)
 ```
 
 ---
@@ -463,8 +488,20 @@ against the submitted concept:
   price ranges (`agents/data/market_prices.json`) plus a deterministic per-day variation model
   (a hash of crop + today's date), so the price moves day to day and is stable within a day,
   without a live feed. See `doc/MarketPriceCheckerPlan.md` for the full rationale.
+- **Product recommendations — data source.** Recommendations come from a static, point-in-time snapshot of the Hayleys Agriculture crop-protection catalogue (`agents/data/hayleys_products.json`, scraped 2026-07-05), mapped to diseases by label-based rules in `agents/data/hayleys_disease_map.py`. No live scraping, no prices, and no Gemini call in this agent; an unmatched disease returns an explicit no-match note.
 - **Persistent Personal Farm Dashboard.** Not implemented in this build — results pages remain
   single-session (`sessionStorage`), not tied to a persistent farmer identity.
+
+---
+
+## Known Limitations
+
+- **Diagnosis is not clinically validated.** Output is Gemini's judgment, guarded by a keyword plausibility check and a confidence score. Validating against Department of Agriculture officers' diagnoses on real farm photos is the planned next step.
+- **Resource agent weather input.** In the parallel step, `ResourceRecommendationAgent` is called with a placeholder weather object; it is re-run with real weather only if its first call returned an error. Product matching does not depend on weather, but the priority note may omit the weather alert.
+- **Rate limits and the daily quota are in memory per process.** With multiple workers or Cloud Run instances each keeps its own counters. A shared store (for example Redis) is needed for global limits.
+- **CORS defaults to `*`.** Set `ALLOWED_ORIGINS` for production.
+- **Market prices are representative, not live.**
+- **Repository housekeeping.** There is no `LICENSE` file yet, and a stale `.env.example` sits next to the current `example.env`.
 
 ---
 
@@ -484,6 +521,8 @@ gcloud run deploy govihitha-agents \
   --set-env-vars GOOGLE_CLOUD_PROJECT=<your-project> \
   --set-env-vars ALLOWED_ORIGINS=https://<your-vercel-domain>.vercel.app
 ```
+
+CI/CD: `cloudbuild.yaml` builds the image and deploys to Cloud Run; connect it to a Cloud Build trigger. `scripts/deploy-agents.ps1` and `scripts/deploy-frontend.ps1` are PowerShell helpers for manual deploys.
 
 ### Frontend → Vercel
 
@@ -505,4 +544,4 @@ Please keep Python agents stateless (no instance state between requests) and alw
 
 ## License
 
-[MIT](LICENSE)
+MIT. A `LICENSE` file has not been added to the repository yet.
